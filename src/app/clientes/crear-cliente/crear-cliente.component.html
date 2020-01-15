@@ -1,0 +1,95 @@
+<div class="card">
+    <div class="card-header">
+        Crear Cliente
+        <div class="card-header-actions">
+            <a class="btn btn-primary" [routerLink]="['/listado']">Regresar
+            </a>
+        </div>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="formularioCrearCliente">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nombre</label>
+                        <input type="text" formControlName="nombre" class="form-control is-invalid" [ngClass]="{
+      'is-invalid': submitted && f.nombre.errors
+    }">
+                        <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+                            <div *ngIf="f.nombre.errors.required">
+                                El nombre es requerido
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Apellido</label>
+                        <input type="text" formControlName="apellido" class="form-control is-invalid" [ngClass]="{
+                            'is-invalid': submitted && f.nombre.errors
+                          }">
+                        <div *ngIf="submitted && f.apellido.errors" class="invalid-feedback">
+                            <div *ngIf="f.apellido.errors.required">
+                                El apellido es requerido
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email</label>
+                        <input type="email" formControlName="email" class="form-control is-invalid" [ngClass]="{
+                            'is-invalid': submitted && f.email.errors
+                          }">
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">
+                                El email es requerido
+                            </div>
+                            <div *ngIf="f.email.errors.email">
+                                El email tiene un formato invalido
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Fecha</label>
+                        <input type="date" formControlName="createdAt" class="form-control is-invalid" [ngClass]="{
+                            'is-invalid': submitted && f.createdAt.errors
+                          }">
+                        <div *ngIf="submitted && f.createdAt.errors" class="invalid-feedback">
+                            <div *ngIf="f.createdAt.errors.required">
+                                La Fecha es requerido
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Region</label>
+                        <select formControlName="region" class="form-control is-invalid" [ngClass]="{
+                            'is-invalid': submitted && f.region.errors
+                          }">
+                            <option [ngValue]="region" *ngFor="let region of regiones">
+                                {{region.nombre}}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted && f.region.errors" class="invalid-feedback">
+                            <div *ngIf="f.region.errors.required">
+                                La región es requerida
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" (click)="crearCliente()" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

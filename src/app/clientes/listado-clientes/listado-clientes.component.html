@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="card-body">
+        Listado clientes
+        <div class="card-header-actions">
+            <a class="btn btn-primary" [routerLink]="['/crear']">Crear
+                Cliente</a></div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre Completo</th>
+                        <th scope="col">Region</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Email</th>
+                        <th>opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of clientes">
+                        <th scope="row">{{item.id}}</th>
+                        <td>{{item.nombre}} {{item.apellido}}</td>
+                        <td>{{item.region.nombre}}</td>
+                        <td>{{item.createdAt}}</td>
+                        <td>{{item.email}}</td>
+                        <td><button class="btn btn-success btn-sm" [routerLink]="['/editar/', item.id]"
+                                routerLinkActive="router-link-active">Editar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
