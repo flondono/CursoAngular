@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { DetalleClienteComponent } from './clientes/detalle-cliente/detalle-cliente.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     NavbarComponent,
     CrearClienteComponent,
     EditarClienteComponent,
-    CrearFacturaComponent
+    CrearFacturaComponent,
+    DetalleClienteComponent
   ],
   imports: [
     BrowserModule,

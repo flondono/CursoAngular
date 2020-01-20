@@ -19,7 +19,9 @@
                 <tbody>
                     <tr *ngFor="let item of clientes">
                         <th scope="row">{{item.id}}</th>
-                        <td>{{item.nombre}} {{item.apellido}}</td>
+                        <td>
+                            <a [routerLink]="['/clientes/detalle/', item.id]">{{item.nombre}} {{item.apellido}}</a>
+                        </td>
                         <td>{{item.region.nombre}}</td>
                         <td>{{item.createdAt}}</td>
                         <td>{{item.email}}</td>

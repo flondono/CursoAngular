@@ -4,6 +4,7 @@ import { ListadoClientesComponent } from './clientes/listado-clientes/listado-cl
 import { CrearClienteComponent } from './clientes/crear-cliente/crear-cliente.component';
 import { EditarClienteComponent } from './clientes/editar-cliente/editar-cliente.component';
 import { CrearFacturaComponent } from './facturas/crear-factura/crear-factura.component';
+import { DetalleClienteComponent } from './clientes/detalle-cliente/detalle-cliente.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'crear/factura/:id',
     component: CrearFacturaComponent
+  },
+  {
+    path: 'clientes/detalle/:id',
+    component: DetalleClienteComponent
   }
 ];
 

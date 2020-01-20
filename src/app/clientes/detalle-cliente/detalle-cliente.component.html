@@ -1,0 +1,47 @@
+<div class="card" *ngIf="cliente">
+    <div class="card-header">Detalle del Cliente</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-3">
+                <p>Nombre: {{cliente.nombre}}</p>
+            </div>
+            <div class="col-md-3">
+                <p>Apellido: {{cliente.apellido}}</p>
+            </div>
+            <div class="col-md-3">
+                <p>Correo: {{cliente.email}}</p>
+            </div>
+            <div class="col-md-3">
+                <p>{{cliente.region.nombre}}</p>
+            </div>
+        </div>
+        <div class="row" *ngFor="let factura of cliente.facturas">
+            <div class="col-md-12">
+                <p>Descripción: {{factura.descripcion}}</p>
+            </div>
+
+            <div class="col-md-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>CANTIDAD</th>
+                            <th>PRODUCTO</th>
+                            <th>PRECIO</th>
+                            <th>IMPORTE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of factura.items">
+                            <td>{{item.id}}</td>
+                            <td>{{item.cantidad}}</td>
+                            <td>{{item.producto.nombre}}</td>
+                            <td>{{item.producto.precio}}</td>
+                            <td>{{item.importe}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
