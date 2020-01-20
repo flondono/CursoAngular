@@ -25,4 +25,16 @@ export class ClienteService {
   getRegiones(): Observable<IRegion> {
     return this.http.get<IRegion>(`${environment.baseUrl}/clientes/regiones`);
   }
+
+  getClientePorId(id: number): Observable<ICliente> {
+    return this.http.get<ICliente>(`${environment.baseUrl}/clientes/${id}`);
+  }
+
+  updateCliente(cliente: ICliente): Observable<ICliente> {
+    return this.http.put<ICliente>(`${environment.baseUrl}/clientes/${cliente.id}`, cliente);
+  }
+
+  deleteCliente(id: number): Observable<ICliente> {
+    return this.http.delete<ICliente>(`${environment.baseUrl}/clientes/${id}`);
+  }
 }

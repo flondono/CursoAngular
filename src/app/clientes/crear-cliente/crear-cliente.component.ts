@@ -5,6 +5,7 @@ import { ClienteService } from '../cliente.service';
 import { ICliente } from '../icliente';
 import { IRegion } from '../iregion';
 
+
 @Component({
   selector: 'app-crear-cliente',
   templateUrl: './crear-cliente.component.html',

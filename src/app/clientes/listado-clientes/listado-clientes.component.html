@@ -23,8 +23,15 @@
                         <td>{{item.region.nombre}}</td>
                         <td>{{item.createdAt}}</td>
                         <td>{{item.email}}</td>
-                        <td><button class="btn btn-success btn-sm" [routerLink]="['/editar/', item.id]"
-                                routerLinkActive="router-link-active">Editar</button></td>
+                        <td>
+                            <button class="btn btn-primary btn-sm mr-3" [routerLink]="['/crear/factura/', item.id]">
+                                Crear Factura</button>
+
+                            <button class="btn btn-success btn-sm mr-3" [routerLink]="['/editar/', item.id]"
+                                routerLinkActive="router-link-active">
+                                Editar</button>
+                            <button class="btn btn-danger btn-sm" (click)="borrarCliente(item.id)">Eliminar</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>

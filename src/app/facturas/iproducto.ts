@@ -1,7 +1,5 @@
-import { NodeCompatibleEventEmitter } from 'rxjs/internal/observable/fromEvent';
-
-export class Iproducto {
-    id:NodeCompatibleEventEmitter;
-    nombre:string;
-    precio:number;
+export class IProducto {
+    id: number;
+    nombre: string;
+    precio: number;
 }

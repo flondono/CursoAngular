@@ -1,0 +1,102 @@
+<div class="card">
+    <div class="card-header">Crear factura</div>
+    <div class="card-body">
+        <form [formGroup]="formularioFactura" (submit)="crearFactura()">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" *ngIf="factura.cliente">
+                            <label class="form-col-form-label" for="">Cliente</label>
+                            <input type="text" class="form-control"
+                                value="{{factura.cliente.nombre}} {{factura.cliente.apellido}}" disabled />
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-col-form-label">Descripción</label>
+                            <textarea type="text" class="form-control is-invalid" formControlName="descripcion"
+                                [ngClass]="{
+              'is-invalid': submitted && f.descripcion.errors
+            }"></textarea>
+                            <div *ngIf="submitted && f.descripcion.errors" class="invalid-feedback">
+                                <div *ngIf="f.descripcion.errors.required">
+                                    La descripción es requerida
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-col-form-label" for="">Observaciones</label>
+                            <textarea class="form-control is-invalid" formControlName="observacion" [ngClass]="{
+                            'is-invalid': submitted && f.observacion.errors
+                            }"></textarea>
+                            <div *ngIf="submitted && f.observacion.errors" class="invalid-feedback">
+                                <div *ngIf="f.observacion.errors.required">
+                                    La observacion es requerida
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <mat-form-field class="example-full-width">
+                                <input type="text" placeholder="Añadir producto" matInput [formControl]="myControl"
+                                    [matAutocomplete]="auto">
+                                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
+                                    [displayWith]="mostrarNombre" (optionSelected)="seleccionarProducto($event)">
+                                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                        {{option.nombre}}
+                                    </mat-option>
+                                </mat-autocomplete>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-hover table-striped table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Precio</th>
+                                    <th>Cantidad</th>
+                                    <th>Total</th>
+                                    <th>Eliminar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of factura.items">
+                                    <td>{{item.producto.nombre}}</td>
+                                    <td>{{item.producto.precio}}</td>
+                                    <td><input type="number" class="form-control sm-4" value="{{item.cantidad}}"
+                                            (change)="actualizarCantidad(item.producto.id, $event)"></td>
+                                    <td>{{item.calcularImporte()}}</td>
+                                    <td><button class="btn btn-danger btn-sm" type="button"
+                                            (click)="eliminarItem(item.producto.id)">X</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h5 class="float-right">Valor Total: <span
+                                class="badge badge-secondary">{{factura.calcularGranTotal()}}</span></h5>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary" [disabled]="factura.items.length === 0">
+                            Guardar factura
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
